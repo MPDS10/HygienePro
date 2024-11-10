@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HygienePro: page d'acceuil</title>
+    <link rel="stylesheet" href="../static/css/deco.css">
+    <script src="../static/javascript/validation.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>HygienePro</h1>
+    </header>
+    <section>
+        <h2>Recherche de contraventions</h2>
+        <form action="/recherche" method="get">
+            <input type="text" id="clavier" name="clavier" placeholder="Rechercher par établissement, propriétaire ou adresse...">
+            <button type="submit">Rechercher</button>
+        </form>
+    </section>
+    <section>
+    <h2>Recherche de contraventions par nom de restaurant</h2>
+    <form>
+        <label for="nomRestaurant">Choisir un restaurant :</label>
+        <select id="nomRestaurant">
+
+        </select>
+        <button type="button" onclick="rechercherContraventionsParNom()">Rechercher</button>
+    </form>
+    </section>
+    <section>
+        <h2>Recherche de contraventions dans un intervalle</h2>
+        <form action="/contrevenants"  method="get">
+            <div class="dates_container">
+                <label for="du"> Du : </label>
+                <input type="date" id="du" name="du">
+            </div>
+            <div class="dates_container">
+                <label for="au"> Au : </label>
+                <input type="date" id="au" name="au">
+            </div>
+        <button type="button" onclick="rechercherContraventions()">Parcourir</button>
+        </form>
+    </section>
+    <section class="options">
+        <div class="option">
+            <a href="/doc">
+                <button> DOCUMENTATION </button>
+            </a>
+        </div>
+        <div class="option">
+            <a href="/liste_etablissements">
+                <button> LISTE DES ETABLISSEMENTS AVEC INFRACTIONS </button>
+            </a>
+        </div>
+        <div class="option">
+            <a href="/liste_etablissements_xml">
+                <button> LISTE DES ETABLISSEMENTS AVEC INFRACTIONS(XML)</button>
+            </a>
+        </div>
+        <div class="option">
+            <a href="/liste_etablissements_csv">
+                <button> LISTE DES ETABLISSEMENTS AVEC INFRACTIONS(CSV)</button>
+            </a>
+        </div>
+        <div class="option">
+            <a href="/deposer_plainte">
+                <button> DEPOSER UNE PLAINTE </button>
+            </a>
+        </div>
+        <div class="option">
+            <a href="/inscription">
+                <button> CREER UN COMPTE </button>
+            </a>
+        </div>
+    </section>
+    <section id="resultats">
+    <h2>Résultats de la recherche</h2>
+    <table id="table-contrevenants">
+        <thead>
+            <tr>
+                <th>Nom de l'établissement</th>
+                <th>Nombre de contraventions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</section>
+</div>
+</body>
+</html>

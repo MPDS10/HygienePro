@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposer une plainte</title>
+    <link rel="stylesheet" href="../static/css/deco.css">
+    <script src="../static/javascript/validation.js"></script>
+</head>
+<body>
+    <h1> FORMULAIRE DE PLAINTE </h1>
+     <form>
+        <label for="nom_etablissement">Nom de l'établissement :</label><br>
+        <input type="text" name="nom_etablissement" id="nom_etablissement"><br><br>
+
+        <label for="adresse">Adresse de l'établissement :</label><br>
+        <input type="text" name="adresse" id="adresse"><br><br>
+
+        <label for="ville">Ville de l'établissement :</label><br>
+        <input type="text" name="ville" id="ville"><br><br>
+
+        <label for="date_visite_client">Votre date de visite :</label><br>
+        <input type="date" name="date_visite_client" id="date_visite_client"><br><br>
+
+        <label for="nom_client">Votre nom :</label><br>
+        <input type="text" name="nom_client" id="nom_client"><br><br>
+
+        <label for="prenom_client">Votre prénom :</label><br>
+        <input type="text" name="prenom_client" id="prenom_client"><br><br>
+
+        <label for="description_probleme">Votre description du problème :</label><br>
+        <textarea name="description_probleme" id="description_probleme" rows="4" cols="50"></textarea><br><br>
+
+        <button type="button" onclick="valider_plainte()" id="soumission_plainte">Soumettre la plainte</button>
+    </form>
+</body>
+</html>

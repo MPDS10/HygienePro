@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page Resultat recherche</title>
+    <link rel="stylesheet" href="../static/css/deco.css">
+</head>
+<body>
+
+     <h1>Résultats de la recherche</h1>
+      {% for contrevenant in contraventions %}
+      <div class="resultat">
+            <h4>{{ contrevenant[6] }} ({{ contrevenant[1] }})</h4>
+            <p><b>id_poursuite:</b> {{ contrevenant[0]}}</p>
+            <p>{{ contrevenant[3]}}</p>
+            <p><b>date:</b> {{ contrevenant[2]}}</p>
+            <p><b>adresse:</b> {{ contrevenant[4]}}</p>
+            <p><b>ville:</b> {{ contrevenant[9]}}</p>
+            <p><b>date jugement:</b> {{ contrevenant[5]}}</p>
+            <p><b>montant:</b> {{ contrevenant[7]}}</p>
+            <p><b>proprietaire:</b> {{ contrevenant[8]}}</p>
+            <p><b>statut:</b> {{ contrevenant[10]}}</p>
+            <p><b>date statut:</b> {{ contrevenant[11]}}</p>
+            <p><b>categorie:</b> {{ contrevenant[12] }}</p>
+      </div>
+          <hr> <!-- Ajout d'une ligne horizontale pour séparer les entrées -->
+      {% endfor %}
+</body>
+</html>

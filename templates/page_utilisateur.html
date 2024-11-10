@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de compte utilisateur</title>
+    <link rel="stylesheet" href="../static/css/deco.css">
+    <script src="../static/javascript/validation.js"></script>
+</head>
+<body>
+    <h1> CREATION DE COMPTE </h1>
+    <form>
+        <label for="nom_utilisateur">Votre nom complet :</label><br>
+        <input type="text" name="nom_utilisateur" id="nom_utilisateur" required><br><br>
+
+        <label for="email_utilisateur">Votre adresse courriel :</label><br>
+        <input type="email" name="email_utilisateur" id="email_utilisateur" required><br><br>
+
+        <label for="mdp_utilisateur">Entrez un mot de passe :</label><br>
+        <input type="password" name="mdp_utilisateur" id="mdp_utilisateur" required><br><br>
+
+        <label for="etablissement_surveiller">Les établissements à surveiller :</label><br>
+        <input type="text" name="etablissement_surveiller" id="etablissement_surveiller" required><br><br>
+
+        <button type="submit" onclick="creer_compte()">Créer le profil</button><br><br>
+
+    </form>
+</body>
+</html>

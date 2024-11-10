@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des établissements et infractions</title>
+    <link rel="stylesheet" href="../static/css/deco.css">
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Liste des établissements</th>
+                <th>Nombre de violations</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for liste_etablissement in etablissements %}
+                <tr>
+                    <td>{{ liste_etablissement.get("nom_etablissment") }}</td>
+                    <td>{{ liste_etablissement.get("nb_infractions") }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

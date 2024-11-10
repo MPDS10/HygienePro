@@ -1,0 +1,223 @@
+#%RAML 1.0
+title: Documentation API des etablissements ayant reçus des contraventions
+version: v1
+baseUri: http://localhost:5000
+
+/contrevenants:
+  displayName: A4
+  description: |
+    Service permettant d'obtenir la liste des contraventions émises entre deux dates spécifiées.
+
+  get:
+    description: |
+      Obtient la liste des contraventions entre deux dates spécifiées en paramètre.
+      Les dates doivent être au format ISO 8601.
+
+    queryParameters:
+      du:
+        displayName: Date de début
+        type: string
+        description: Date de début de la période de recherche au format YYYY-MM-DD.
+        example: 2022-01-01
+        required: true
+      au:
+        displayName: Date de fin
+        type: string
+        description: Date de fin de la période de recherche au format YYYY-MM-DD.
+        example: 2022-12-31
+        required: true
+
+    responses:
+      200:
+        description: Resultat correct lorsque les dates de debut et de fin sont correctes
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "etablissement": "THALI CUISINE INDIENNE",
+                  "adresse": "1409 Rue Saint-Marc, Montréal, Québec",
+                  "proprietaire": "REMONA SANDHU",
+                  "description": "Le produit altérable à la chaleur à l'exception des fruits et légumes frais entiers doit être refroidi sans retard et maintenu constamment à une température interne et ambiante ne dépassant pas 4C jusqu'à sa livraison au consommateur, sauf pendant le temps requis pour l'application d'un procédé de fabrication ou d'un traitement reconnu en industrie alimentaire et qui exige une plus haute température.",
+                  "business_id": 9812,
+                  "categorie": "Restaurant service rapide",
+                  "date_jugement": "20180629",
+                  "date_statut": "20171024",
+                  "id_poursuite": 4645,
+                  "montant": "1200",
+                  "statut": "Fermé changement d'exploitant",
+                  "date": "20170612",
+                  "ville": "Montréal"
+                },
+                {
+                  "etablissement": "RELA MARCHE AFRICAIN",
+                  "adresse": "925 Boul. Décarie, St-Laurent, Québec",
+                  "proprietaire": "9351-3356 QUEBEC INC",
+                  "description": "Le produit périssable vendu chaud ou servi chaud au consommateur doit être gardé à une température interne d'au moins 60C jusqu'à sa livraison.",
+                  "business_id": 117471,
+                  "categorie": "Épicerie avec préparatione",
+                  "date_jugement": "20220131",
+                  "date_statut": "20180508",
+                  "id_poursuite": 7980,
+                  "montant": "250",
+                  "statut": "Ouvert",
+                  "date": "20180508",
+                  "ville": "Montréal"
+              ]
+
+/liste_etablissements:
+  displayName: C1
+  description: |
+    Service REST permettant d'obtenir la liste des établissements ayant commis une ou plusieurs infractions.
+    Pour chaque établissement, le service indique le nombre d'infractions connues. La liste est triée en ordre décroissant du nombre d'infractions.
+
+  get:
+    description: |
+      Obtient la liste des établissements ayant commis des infractions, triée en ordre décroissant du nombre d'infractions.
+    responses:
+      200:
+        description: Liste des établissements avec infractions triée en ordre décroissant du nombre d'infractions
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "nom": "THALI CUISINE INDIENNE",
+                  "nb_infractions": 5
+                },
+                {
+                  "nom": "RELA MARCHE AFRICAIN",
+                  "nb_infractions": 3
+                }
+              ]
+/liste_etablissements_xml:
+  displayName: C2
+  description: |
+    Service REST permettant d'obtenir la liste des établissements ayant commis une ou plusieurs infractions au format XML.
+    Pour chaque établissement, le service indique le nombre d'infractions connues. La liste est triée en ordre décroissant du nombre d'infractions.
+
+  get:
+    description: |
+      Obtient la liste des établissements ayant commis des infractions au format XML, triée en ordre décroissant du nombre d'infractions.
+    responses:
+      200:
+        description: Liste des établissements avec infractions triée en ordre décroissant du nombre d'infractions (format XML)
+        body:
+          application/xml:
+            example: |
+              <etablissements>
+                <etablissement>
+                  <nom>THALI CUISINE INDIENNE</nom>
+                  <nb_infractions>5</nb_infractions>
+                </etablissement>
+                <etablissement>
+                  <nom>RELA MARCHE AFRICAIN</nom>
+                  <nb_infractions>3</nb_infractions>
+                </etablissement>
+                <!-- Autres établissements -->
+              </etablissements>
+
+/liste_etablissements_csv:
+  displayName: C3
+  description: |
+    Service REST permettant d'obtenir la liste des établissements ayant commis une ou plusieurs infractions au format CSV.
+    Pour chaque établissement, le service indique le nombre d'infractions connues. La liste est triée en ordre décroissant du nombre d'infractions.
+
+  get:
+    description: |
+      Obtient la liste des établissements ayant commis des infractions au format CSV, triée en ordre décroissant du nombre d'infractions.
+    responses:
+      200:
+        description: Liste des établissements avec infractions triée en ordre décroissant du nombre d'infractions (format CSV)
+        body:
+          text/csv:
+            example: |
+              "Nom","Nombre d'infractions"
+              "THALI CUISINE INDIENNE",5
+              "RELA MARCHE AFRICAIN",3
+              "..."
+
+/soumettre_plainte:
+  displayName: D1
+  description: |
+    Service permettant de soumettre une plainte concernant un établissement.
+
+  post:
+    description: |
+      Permet de soumettre une plainte concernant un établissement.
+      Les données doivent être envoyées au format JSON et validées par un schéma JSON.
+    body:
+      application/json:
+        example: |
+          {
+            "nom_etablissement": "RELA MARCHE AFRICAIN",
+            "adresse": "925 Boul. Décarie, St-Laurent, Québec",
+            "ville": "Montréal",
+            "date_visite_client": "2024-04-15",
+            "nom_client": "Ndiago",
+            "prenom_client": "Meurie",
+            "description_probleme": "Des cheveux dans la nourriture."
+          }
+    responses:
+      200:
+        description: Plainte enregistrée avec succès
+      400:
+        description: Requête invalide (données manquantes ou format incorrect)
+      500:
+        description: Erreur interne du serveur lors de l'enregistrement de la plainte
+
+
+/creer_compte:
+  displayName: E1
+  description: |
+    Service permettant à un utilisateur de créer un profil d'utilisateur.
+    Le service reçoit un document JSON contenant les informations nécessaires pour créer le profil.
+
+  post:
+    description: |
+      Permet à un utilisateur de créer un profil d'utilisateur en envoyant un document JSON.
+      Les données JSON doivent être validées par un schéma JSON.
+
+    body:
+      application/json:
+        example: |
+          {
+            "nom_complet": "Meurie Ndiago",
+            "adresse_courriel": "Meurie@example.com",
+            "etablissements_surveilles": ["RELA MARCHE AFRICAIN", "THALIE CUISINE INDIENNE"],
+            "mot_de_passe": "secret1234"
+          }
+
+    responses:
+      200:
+        description: Ouverture de compte réussie
+      400:
+        description: Un compte avec cette adresse courriel existe déjà
+      500:
+        description: Erreur interne du serveur lors de la création du profil
+
+
+/doc:
+  displayName: Documentation
+  description: Affiche la documentation HTML de la spécification RAML du service web.
+
+  get:
+    description: Affiche la documentation HTML de la spécification RAML.
+
+    responses:
+      200:
+        body:
+          text/html:
+            example: |
+              <!DOCTYPE html>
+              <html>
+                <head>
+                  <title>Documentation API Contraventions</title>
+                </head>
+                <body>
+                  <h1>Documentation API Contraventions</h1>
+                  <p>Voici la documentation de l'API Contraventions.</p>
+                  <!-- Insérez votre documentation HTML ici -->
+                </body>
+              </html>
+

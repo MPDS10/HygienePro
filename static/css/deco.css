@@ -1,0 +1,204 @@
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3faf2;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Style de l'en-tête */
+header {
+    background-color: #6495ED; /* Bleu clair */
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Style des sections */
+section {
+    padding: 20px;
+}
+
+/* Style des boutons */
+button {
+    background-color: #87CEEB; /* Bleu clair */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4682B4; /* Bleu foncé */
+}
+
+
+/* CSS pour les options */
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.option {
+    text-align: center;
+}
+
+/* Style pour la page d'erreur 404 */
+.page-erreur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.page-erreur img {
+    width: 200px; /* Ajuster la taille de l'image selon vos besoins */
+    margin-bottom: 20px;
+}
+
+.page-erreur-contenu {
+    margin-bottom: 20px;
+}
+
+.page-erreur-contenu h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.page-erreur-contenu p {
+    margin-bottom: 10px;
+}
+
+.page-erreur-solution {
+    list-style-type: none;
+    padding: 0;
+}
+
+.page-erreur-solution li {
+    margin-bottom: 5px;
+}
+/* Styles spécifiques pour la page de résultats de recherche */
+.resultats {
+    padding: 20px;
+}
+
+.resultats h1 {
+    color: #333; /* Couleur de texte sombre */
+    margin-bottom: 20px;
+}
+
+/* Style de l'en-tête */
+h1 {
+    color: #333; /* Couleur de titre sombre */
+    margin-bottom: 20px;
+}
+
+/* Style des résultats */
+.resultat {
+    background-color: #fff; /* Fond blanc pour chaque résultat */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.resultat h4 {
+    color: #007bff; /* Couleur de titre bleue */
+    margin-bottom: 10px;
+}
+
+.resultat p {
+    margin: 5px 0;
+}
+
+.resultat hr {
+    border: none;
+    border-top: 1px solid #ccc; /* Ligne horizontale grise */
+    margin: 10px 0;
+}
+
+/* Style du tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: #007bff; /* Couleur d'en-tête bleue */
+    color: #fff; /* Texte en blanc */
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Couleur de fond gris clair pour les lignes impaires */
+}
+
+tbody tr:hover {
+    background-color: #ddd; /* Couleur de fond gris clair au survol */
+}
+
+/* Style du formulaire */
+form {
+    background-color: #fff; /* Couleur de fond blanche */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    padding: 20px;
+    max-width: 600px; /* Largeur maximale du formulaire */
+    margin: auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 20px); /* Largeur ajustée */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Taille inclut les bordures */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Couleur de fond bleue */
+    color: #fff; /* Texte en blanc */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Couleur de fond bleue foncée au survol */
+}
